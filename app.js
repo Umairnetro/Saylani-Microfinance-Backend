@@ -1,16 +1,13 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const port = 3000;
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+const routes = require("./routes");
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+app.use("/api", routes);
 
-module.exports = app
+module.exports = app;
