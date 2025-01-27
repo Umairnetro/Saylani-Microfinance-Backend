@@ -9,5 +9,15 @@ app.use(express.json());
 const routes = require("./routes");
 
 app.use("/api", routes);
+app.get("/", (req, res) => {
+  res.send({
+    message: "Welcome to the Saylani Microfinance API!",
+    routes: {
+      register: "/api/register",
+      login: "/api/login",
+      user: "/api/user",
+    },
+  });
+});
 
 module.exports = app;
