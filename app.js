@@ -13,9 +13,9 @@ app.get("/", (req, res) => {
   res.send({
     message: "Welcome to the Saylani Microfinance API!",
     routes: {
-      register: "/api/register",
-      login: "/api/login",
-      user: "/api/user",
+      register: "/api/auth/register",
+      login: "/api/auth/login",
+      user: "/api/auth/user",
     },
   });
 });
