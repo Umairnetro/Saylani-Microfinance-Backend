@@ -7,12 +7,12 @@ const {
   LoginController,
 } = require("../controllers/authController");
 
+// Middlewares
+const validationRequest = require("../middleware/validationMiddleware");
+const userSchema = require("../validation/userValidation");
 
-router.get("/", (req, res) => {
-  res.send("Hello world");
-});
 
-router.post("/register", registerController);
+router.post("/register", validationRequest(userSchema), registerController);
 router.post("/login", LoginController);
 
 module.exports = router;
