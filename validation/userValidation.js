@@ -11,7 +11,11 @@ const userSchema = joi.object({
         "CNIC must be exactly 13 digits and contain only numbers.",
     }),
   email: joi.string().email().required(),
+});
+
+const loginSchema = joi.object({
+  email: joi.string().email().required(),
   password: joi.string().required(),
 });
 
-module.exports = userSchema;
+module.exports = {userSchema, loginSchema};

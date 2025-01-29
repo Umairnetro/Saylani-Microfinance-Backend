@@ -9,10 +9,9 @@ const {
 
 // Middlewares
 const validationRequest = require("../middleware/validationMiddleware");
-const userSchema = require("../validation/userValidation");
-
+const { userSchema, loginSchema } = require("../validation/userValidation");
 
 router.post("/register", validationRequest(userSchema), registerController);
-router.post("/login", LoginController);
+router.post("/login", validationRequest(loginSchema), LoginController);
 
 module.exports = router;

@@ -12,8 +12,8 @@ const transporter = (name = "unknown", email, password) => {
   const mailOptions = {
     from: "Nodemailer",
     to: email,
-    subject: "Your login password for Saylani Microfinance",
-    text: `Thanks for registering ${name}, this is your password: ${password}`,
+    subject: "Saylani Microfinance",
+    text: `Thanks for registering ${name}, this is your password: ${password}.\n Please don't share this password with anyone.`,
   };
 
   transport.sendMail(mailOptions, (error, info) => {
