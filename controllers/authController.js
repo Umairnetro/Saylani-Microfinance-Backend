@@ -63,4 +63,16 @@ const LoginController = async (req, res) => {
   }
 };
 
-module.exports = { registerController, LoginController };
+// user
+const userController = (req, res) => {
+  try {
+    const user = User.find({ _id: user.id });
+    if (!user) return res.status(400).json({ message: "invalid Credentials" });
+
+    res.send({ message: "Login Successfully", user });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = { registerController, LoginController, userController };
