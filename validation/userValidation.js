@@ -8,7 +8,7 @@ const userSchema = joi.object({
     .required()
     .messages({
       "string.pattern.base":
-        "CNIC must be exactly 13 digits and contain only numbers.",
+        `CNIC must be exactly 13 digits and contain only numbers.`,
     }),
   email: joi.string().email().required(),
 });
