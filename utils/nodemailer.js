@@ -1,6 +1,10 @@
 const nodemailer = require("nodemailer");
 
-const transporter = (name = "unknown", email= "umairjdu@gmail.com", password = "XXXXXXXXXXXX") => {
+const transporter = async (
+  name = "unknown",
+  email = "umairjdu@gmail.com",
+  password = "XXXXXXXXXXXX"
+) => {
   try {
     const transport = nodemailer.createTransport({
       service: "Gmail",
@@ -11,22 +15,19 @@ const transporter = (name = "unknown", email= "umairjdu@gmail.com", password = "
     });
 
     const mailOptions = {
-      from: "Nodemailer",
+      from: "umairjdu@gmail.com",
       to: email,
       subject: "Saylani Microfinance",
       text: `Thanks for registering ${name}, this is your password: ${password}.\n Please don't share this password with anyone.`,
     };
 
-    transport.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log("Error: ", error);
-      } else {
-        console.log("Email send", info);
-      }
-    });
+    const info = await transport.sendMail(mailOptions);
+
+    console.log({ user: "email sended, please check your email", info });
+    return info
   } catch (error) {
     console.log({ error });
   }
 };
 
-module.exports = transporter;
+module.exports = { transporter };

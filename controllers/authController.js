@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // Models
 const User = require("../models/User");
-const transporter = require("../utils/nodemailer");
+const { transporter } = require("../utils/nodemailer");
 
 // Generate token
 const generateToken = require("../utils/token");
@@ -32,7 +32,7 @@ const registerController = async (req, res) => {
     await user.save();
 
     // send email
-    transporter(name, email, hashedpassword);
+    const info = await transporter(name, email, hashedpassword);
     return res.json({
       message: "User Registered, Please check your email to get password",
     });
