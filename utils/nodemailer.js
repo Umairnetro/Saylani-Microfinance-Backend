@@ -2,7 +2,6 @@ const nodemailer = require("nodemailer");
 
 const transporter = async (
   name = "unknown",
-  email = "umairjdu@gmail.com",
   password = "XXXXXXXXXXXX"
 ) => {
   try {
@@ -15,7 +14,7 @@ const transporter = async (
     });
 
     const mailOptions = {
-      from: "umairjdu@gmail.com",
+      from: "Acme <umairjdu@gmail.com>",
       to: email,
       subject: "Saylani Microfinance",
       text: `Thanks for registering ${name}, this is your password: ${password}.\n Please don't share this password with anyone.`,

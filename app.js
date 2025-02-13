@@ -24,34 +24,4 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/email", async (req, res) => {
-  try {
-    const transport = nodemailer.createTransport({
-      service: "Gmail",
-      auth: {
-        user: "umairjdu@gmail.com",
-        pass: "zaly yuav lyvt uqtn",
-      },
-    });
-
-    const mailOptions = {
-      from: "umairjdu@gmail.com",
-      to: "umairjdu@gmail.com",
-      subject: "Hello World",
-      html: "<strong>It works!</strong>",
-    };
-
-    const info = await transport.sendMail(mailOptions);
-    console.log(info);
-
-    res.json({
-      message: "Email sent successfully, please check your email",
-      details: info,
-    });
-  } catch (error) {
-    console.log("Error sending email: ", error);
-    res.json({ error: error.message });
-  }
-});
-
 module.exports = app;
