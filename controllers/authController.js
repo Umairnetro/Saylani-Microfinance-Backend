@@ -24,7 +24,7 @@ const registerController = async (req, res) => {
       .toString()
       .slice(18);
 
-    const hashedpassword = await bcrypt.hash(generatedPassword, 10);
+    const hashedpassword = await bcrypt.hash(`${generatedPassword}${cnic}`, 10);
 
     const user = new User({ name, cnic, email, password: hashedpassword });
 
@@ -32,7 +32,7 @@ const registerController = async (req, res) => {
     await user.save();
 
     // send email
-    const info = await transporter(name, email, hashedpassword);
+    const info = await transporter(name, email, `${generatedPassword}${cnic}`);
     return res.json({
       message: "User Registered, Please check your email to get password",
     });
@@ -50,10 +50,12 @@ const LoginController = async (req, res) => {
 
     if (!user) return res.status(400).json({ message: "invalid Credentials" });
 
-    const isMatch = bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch)
-      return res.status(400).json({ message: "invalid Credentials" });
+      return res.status(400).json({
+        message: "invalid Credentials",
+      });
 
     const token = generateToken(user._id);
 
