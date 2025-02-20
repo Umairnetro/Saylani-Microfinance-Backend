@@ -5,6 +5,4 @@ const connectDB = require("../config/db");
 
 connectDB();
 
-/* Server */
-
 module.exports = app;
