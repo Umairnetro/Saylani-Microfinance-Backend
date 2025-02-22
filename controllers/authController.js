@@ -19,7 +19,7 @@ const registerController = async (req, res) => {
   try {
     if (existUser) {
       return res.status(400).json({
-        message: "user already exist",
+        message: "user already exist, please use different email or cnic",
       });
     }
 
