@@ -90,7 +90,7 @@ const loanController = (req, res) => {
     const data = fs.readFileSync(filePath, "utf8");
     const loans = JSON.parse(data);
 
-    return res.status(200).json({ loans});
+    return res.status(200).json(loans);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
