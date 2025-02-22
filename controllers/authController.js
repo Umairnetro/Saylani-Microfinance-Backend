@@ -1,6 +1,9 @@
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 
+const fs = require("fs");
+const path = require("path");
+
 // Models
 const User = require("../models/User");
 const { transporter } = require("../utils/nodemailer");
@@ -33,11 +36,14 @@ const registerController = async (req, res) => {
 
     // send email
     const info = await transporter(name, email, `${generatedPassword}${cnic}`);
-    return res.json({
+    return res.status(200).json({
       message: "User Registered, Please check your email to get password",
     });
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+    return res.status(400).json({
+      message: error.message,
+      newError: "Register route is not working",
+    });
   }
 };
 
@@ -77,4 +83,22 @@ const userController = (req, res) => {
   }
 };
 
-module.exports = { registerController, LoginController, userController };
+// Loans
+const loanController = (req, res) => {
+  try {
+    const filePath = path.join(__dirname, "../data/loans.json");
+    const data = fs.readFileSync(filePath, "utf8");
+    const loans = JSON.parse(data);
+
+    return res.status(200).json({ loans});
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  registerController,
+  LoginController,
+  userController,
+  loanController,
+};

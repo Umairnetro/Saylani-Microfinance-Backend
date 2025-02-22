@@ -1,7 +1,12 @@
 const joi = require("joi");
 
 const userSchema = joi.object({
-  name: joi.string().min(3).max(30).required(),
+  name: joi.string().min(3).max(30).required()
+  .messages({
+    "string.empty": `Name is required.`,
+    "string.min": `Name should have a minimum length of {#limit}.`,
+    "string.max": `Name should have a maximum length of {#limit}.`,
+  }),
   cnic: joi
     .string()
     .pattern(/^\d{13}$/)
