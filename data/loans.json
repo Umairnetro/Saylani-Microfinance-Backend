@@ -5,22 +5,23 @@
     "description": "A loan to cover wedding expenses.",
     "interestRate": 5.5,
     "duration": "5 years",
+    "img": "../images/wedding.jpg",
     "subCategories": [
       {
         "id": 1,
-        "name": "valima"
+        "name": "Valima"
       },
       {
         "id": 2,
-        "name": "valima"
+        "name": "Furniture"
       },
       {
         "id": 3,
-        "name": "valima"
+        "name": "Valima Food"
       },
       {
         "id": 4,
-        "name": "valima"
+        "name": "Jahez"
       }
     ]
   },
@@ -30,22 +31,19 @@
     "description": "Loan for constructing a new home.",
     "interestRate": 6.0,
     "duration": "15 years",
+    "img": "../images/construction.jpg",
     "subCategories": [
       {
         "id": 1,
-        "name": "valima"
+        "name": "Structure"
       },
       {
         "id": 2,
-        "name": "valima"
+        "name": "Finishing"
       },
       {
         "id": 3,
-        "name": "valima"
-      },
-      {
-        "id": 4,
-        "name": "valima"
+        "name": "Loan"
       }
     ]
   },
@@ -55,22 +53,15 @@
     "description": "Loan to support higher education expenses.",
     "interestRate": 4.0,
     "duration": "10 years",
+    "img": "../images/education.jpg",
     "subCategories": [
       {
         "id": 1,
-        "name": "valima"
+        "name": "University Fees"
       },
       {
         "id": 2,
-        "name": "valima"
-      },
-      {
-        "id": 3,
-        "name": "valima"
-      },
-      {
-        "id": 4,
-        "name": "valima"
+        "name": "Child Fees Loan"
       }
     ]
   },
@@ -80,22 +71,23 @@
     "description": "Financial support for starting a new business.",
     "interestRate": 7.5,
     "duration": "8 years",
+    "img": "../images/business.jpg",
     "subCategories": [
       {
         "id": 1,
-        "name": "valima"
+        "name": "Buy Stall"
       },
       {
         "id": 2,
-        "name": "valima"
+        "name": "Advance Rent for Shop"
       },
       {
         "id": 3,
-        "name": "valima"
+        "name": "Shop Assets"
       },
       {
         "id": 4,
-        "name": "valima"
+        "name": "Shop Machinery"
       }
     ]
   }
